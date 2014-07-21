@@ -1,0 +1,171 @@
+[Application Starts]
+2014-01-23 20:34:15 Create Transformation Task.
+2014-01-23 20:34:15 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\connectionStrings.config'.
+2014-01-23 20:34:15 Source file: 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\connectionStrings.config'.
+2014-01-23 20:34:15 Transform  file: 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\connectionStrings.Debug.config'.
+2014-01-23 20:34:15 Executing SetAttributes (transform line 8, 26)
+2014-01-23 20:34:15 on /connectionStrings/add[@name='IdentityServerConfiguration']
+2014-01-23 20:34:15 Applying to 'add' element (no source line info)
+2014-01-23 20:34:15 Set 'name' attribute
+2014-01-23 20:34:15 Set 'connectionString' attribute
+2014-01-23 20:34:15 Set 'providerName' attribute
+2014-01-23 20:34:15 Set 3 attributes
+2014-01-23 20:34:15 Done executing SetAttributes
+2014-01-23 20:34:15 Executing SetAttributes (transform line 13, 18)
+2014-01-23 20:34:15 on /connectionStrings/add[@name='ProviderDB']
+2014-01-23 20:34:15 Applying to 'add' element (no source line info)
+2014-01-23 20:34:15 Set 'name' attribute
+2014-01-23 20:34:15 Set 'connectionString' attribute
+2014-01-23 20:34:15 Set 'providerName' attribute
+2014-01-23 20:34:15 Set 3 attributes
+2014-01-23 20:34:15 Done executing SetAttributes
+[Application Stops]
+[Application Starts]
+2014-01-23 20:34:16 Create Transformation Task.
+2014-01-23 20:34:16 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\tracing.config'.
+2014-01-23 20:34:16 Source file: 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\tracing.config'.
+2014-01-23 20:34:16 Transform  file: 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\tracing.Debug.config'.
+2014-01-23 20:34:16 Executing Replace (transform line 6, 17)
+2014-01-23 20:34:16 on /system.diagnostics/sharedListeners
+2014-01-23 20:34:16 Applying to 'sharedListeners' element (no source line info)
+2014-01-23 20:34:16 Replaced 'sharedListeners' element
+2014-01-23 20:34:16 Done executing Replace
+[Application Stops]
+[Application Starts]
+2014-01-28 08:51:06 Create Transformation Task.
+2014-01-28 08:51:06 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\connectionStrings.config'.
+2014-01-28 08:51:06 Source file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\connectionStrings.config'.
+2014-01-28 08:51:06 Transform  file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\connectionStrings.Debug.config'.
+2014-01-28 08:51:07 Executing SetAttributes (transform line 8, 26)
+2014-01-28 08:51:07 on /connectionStrings/add[@name='IdentityServerConfiguration']
+2014-01-28 08:51:07 Applying to 'add' element (no source line info)
+2014-01-28 08:51:07 Set 'name' attribute
+2014-01-28 08:51:07 Set 'connectionString' attribute
+2014-01-28 08:51:07 Set 'providerName' attribute
+2014-01-28 08:51:07 Set 3 attributes
+2014-01-28 08:51:07 Done executing SetAttributes
+2014-01-28 08:51:07 Executing SetAttributes (transform line 13, 18)
+2014-01-28 08:51:07 on /connectionStrings/add[@name='ProviderDB']
+2014-01-28 08:51:07 Applying to 'add' element (no source line info)
+2014-01-28 08:51:07 Set 'name' attribute
+2014-01-28 08:51:07 Set 'connectionString' attribute
+2014-01-28 08:51:07 Set 'providerName' attribute
+2014-01-28 08:51:07 Set 3 attributes
+2014-01-28 08:51:07 Done executing SetAttributes
+[Application Stops]
+[Application Starts]
+2014-01-28 08:51:07 Create Transformation Task.
+2014-01-28 08:51:07 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\tracing.config'.
+2014-01-28 08:51:07 Source file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\tracing.config'.
+2014-01-28 08:51:07 Transform  file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\tracing.Debug.config'.
+2014-01-28 08:51:08 Executing Replace (transform line 6, 17)
+2014-01-28 08:51:08 on /system.diagnostics/sharedListeners
+2014-01-28 08:51:08 Applying to 'sharedListeners' element (no source line info)
+2014-01-28 08:51:08 Replaced 'sharedListeners' element
+2014-01-28 08:51:08 Done executing Replace
+[Application Stops]
+[Application Starts]
+2014-01-28 09:20:50 Create Transformation Task.
+2014-01-28 09:20:50 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\connectionStrings.config'.
+2014-01-28 09:20:50 Source file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\connectionStrings.config'.
+2014-01-28 09:20:50 Transform  file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\connectionStrings.Staging.config'.
+2014-01-28 09:20:51 Executing SetAttributes (transform line 8, 18)
+2014-01-28 09:20:51 on /connectionStrings/add[@name='IdentityServerConfiguration']
+2014-01-28 09:20:51 Applying to 'add' element (no source line info)
+2014-01-28 09:20:51 Set 'name' attribute
+2014-01-28 09:20:51 Set 'connectionString' attribute
+2014-01-28 09:20:51 Set 'providerName' attribute
+2014-01-28 09:20:51 Set 3 attributes
+2014-01-28 09:20:51 Done executing SetAttributes
+2014-01-28 09:20:51 Executing SetAttributes (transform line 13, 18)
+2014-01-28 09:20:51 on /connectionStrings/add[@name='ProviderDB']
+2014-01-28 09:20:51 Applying to 'add' element (no source line info)
+2014-01-28 09:20:51 Set 'name' attribute
+2014-01-28 09:20:51 Set 'connectionString' attribute
+2014-01-28 09:20:51 Set 'providerName' attribute
+2014-01-28 09:20:51 Set 3 attributes
+2014-01-28 09:20:51 Done executing SetAttributes
+[Application Stops]
+[Application Starts]
+2014-01-28 09:20:51 Create Transformation Task.
+2014-01-28 09:20:51 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\tracing.config'.
+2014-01-28 09:20:51 Source file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\tracing.config'.
+2014-01-28 09:20:51 Transform  file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\tracing.Staging.config'.
+2014-01-28 09:20:52 Executing Replace (transform line 6, 17)
+2014-01-28 09:20:52 on /system.diagnostics/sharedListeners
+2014-01-28 09:20:52 Applying to 'sharedListeners' element (no source line info)
+2014-01-28 09:20:52 Replaced 'sharedListeners' element
+2014-01-28 09:20:52 Done executing Replace
+[Application Stops]
+[Application Starts]
+2014-01-28 12:04:23 Create Transformation Task.
+2014-01-28 12:04:23 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\connectionStrings.config'.
+2014-01-28 12:04:23 Source file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\connectionStrings.config'.
+2014-01-28 12:04:23 Transform  file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\connectionStrings.Staging.config'.
+2014-01-28 12:04:24 Executing SetAttributes (transform line 8, 18)
+2014-01-28 12:04:24 on /connectionStrings/add[@name='IdentityServerConfiguration']
+2014-01-28 12:04:24 Applying to 'add' element (no source line info)
+2014-01-28 12:04:24 Set 'name' attribute
+2014-01-28 12:04:24 Set 'connectionString' attribute
+2014-01-28 12:04:24 Set 'providerName' attribute
+2014-01-28 12:04:24 Set 3 attributes
+2014-01-28 12:04:24 Done executing SetAttributes
+2014-01-28 12:04:24 Executing SetAttributes (transform line 13, 18)
+2014-01-28 12:04:24 on /connectionStrings/add[@name='ProviderDB']
+2014-01-28 12:04:24 Applying to 'add' element (no source line info)
+2014-01-28 12:04:24 Set 'name' attribute
+2014-01-28 12:04:24 Set 'connectionString' attribute
+2014-01-28 12:04:24 Set 'providerName' attribute
+2014-01-28 12:04:24 Set 3 attributes
+2014-01-28 12:04:24 Done executing SetAttributes
+[Application Stops]
+[Application Starts]
+2014-01-28 12:04:24 Create Transformation Task.
+2014-01-28 12:04:24 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\tracing.config'.
+2014-01-28 12:04:24 Source file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\tracing.config'.
+2014-01-28 12:04:24 Transform  file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Api\Configuration\tracing.Staging.config'.
+2014-01-28 12:04:25 Executing Replace (transform line 6, 17)
+2014-01-28 12:04:25 on /system.diagnostics/sharedListeners
+2014-01-28 12:04:25 Applying to 'sharedListeners' element (no source line info)
+2014-01-28 12:04:25 Replaced 'sharedListeners' element
+2014-01-28 12:04:25 Done executing Replace
+[Application Stops]
+[Application Starts]
+2014-01-28 14:16:12 Create Transformation Task.
+2014-01-28 14:16:12 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\connectionStrings.config'.
+2014-01-28 14:16:12 Source file: 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\connectionStrings.config'.
+2014-01-28 14:16:12 Transform  file: 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\connectionStrings.Staging.config'.
+2014-01-28 14:16:12 Executing SetAttributes (transform line 8, 18)
+2014-01-28 14:16:12 on /connectionStrings/add[@name='IdentityServerConfiguration']
+2014-01-28 14:16:12 Applying to 'add' element (no source line info)
+2014-01-28 14:16:12 Set 'name' attribute
+2014-01-28 14:16:12 Set 'connectionString' attribute
+2014-01-28 14:16:12 Set 'providerName' attribute
+2014-01-28 14:16:12 Set 3 attributes
+2014-01-28 14:16:12 Done executing SetAttributes
+2014-01-28 14:16:12 Executing SetAttributes (transform line 13, 18)
+2014-01-28 14:16:12 on /connectionStrings/add[@name='ProviderDB']
+2014-01-28 14:16:12 Applying to 'add' element (no source line info)
+2014-01-28 14:16:12 Set 'name' attribute
+2014-01-28 14:16:12 Set 'connectionString' attribute
+2014-01-28 14:16:12 Set 'providerName' attribute
+2014-01-28 14:16:12 Set 3 attributes
+2014-01-28 14:16:12 Done executing SetAttributes
+[Application Stops]
+[Application Starts]
+2014-01-28 14:16:13 Create Transformation Task.
+2014-01-28 14:16:13 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\tracing.config'.
+2014-01-28 14:16:13 Source file: 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\tracing.config'.
+2014-01-28 14:16:13 Transform  file: 'd:\dev\GitHub\TreeAuth\output\WebSite\Configuration\tracing.Staging.config'.
+2014-01-28 14:16:13 Executing Replace (transform line 6, 17)
+2014-01-28 14:16:13 on /system.diagnostics/sharedListeners
+2014-01-28 14:16:13 Applying to 'sharedListeners' element (no source line info)
+2014-01-28 14:16:13 Replaced 'sharedListeners' element
+2014-01-28 14:16:13 Done executing Replace
+[Application Stops]
+[Application Starts]
+2014-02-03 02:01:49 Create Transformation Task.
+2014-02-03 02:01:49 Start tranformation to 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Demo.OIDC\Conf\oidc.config'.
+2014-02-03 02:01:49 Source file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Demo.OIDC\Conf\oidc.config'.
+2014-02-03 02:01:49 Transform  file: 'd:\dev\GitHub\TreeAuth\output\TreeAuth.Web.Demo.OIDC\Conf\oidc.Debug.config'.
+[Application Stops]
