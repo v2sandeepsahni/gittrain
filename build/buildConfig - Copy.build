@@ -2,40 +2,51 @@
 <project name="GitTrain" default="run" basedir=".">
   <!-- declare property -->
   <property name="buildFileLocation" value ="${project::get-base-directory()}"/>
-  <property name="app.name" value ="GitTrain"/>
-  <property name="project.base.dir" value="${teamcity.build.checkoutDir}\src"/>
+  <property name="project.base.dir" value="${string::substring(buildFileLocation, 0, string::last-index-of(buildFileLocation, '\'))}"/>
+  <property name="project.base.dir" value="${string::substring(project.base.dir, 0, string::last-index-of(project.base.dir, '\'))}"/>
+  <echo message="project.base.dir = ${project.base.dir}" />
+  <property name="build.process.dir" value="${project.base.dir}\tLoc" />
+  <property name="build.process.script.dir" value="${build.process.dir}\build" />
+  <property name="build.environment.local" value="dev" unless="${property::exists('build.environment')}"/>
+  <property name="project.base.dir" value="${string::substring(buildFileLocation, 0, string::last-index-of(buildFileLocation, '\'))}"/>
+  <property name="is.console.application" value="false" unless="${property::exists('is.console.application')}" />
   <property name="build.process.dir" value="${project.base.dir}" />
   <property name="deploy.build.process.dir" value="${buildFileLocation}\.." />
   <property name="output.dir" value="${deploy.build.process.dir}\output" />
   <property name="build.type" value="Debug"/>
+  
   <property name="deploy.dir" value="${deploy.build.process.dir}\output\deploy" />
-  <property name="solution.base.dir" value="${teamcity.build.checkoutDir}\src" />
+  <property name="solution.base.dir" value="${build.process.dir}\src" />
   <property name="app.base.dir" value="." unless="${property::exists('app.base.dir')}" />
   <property name="app.dir" value="${solution.base.dir}\${app.base.dir}\${app.name}"/>
-  <property name="solution.path" value="${solution.base.dir}\${app.name}.sln" unless="${property::exists('solution.path')}"/>
+  <property name="solution.path" value="${solution.base.dir}\${solution.name}.sln" unless="${property::exists('solution.path')}"/>
   <property name="msbuildConstants" value="" />
   <if test="${build.type=='Release'}">
     <property name="msbuildConstants" value="RELEASE" />
   </if>
-  <property name="tools.dir" value="${teamcity.build.checkoutDir}\Tools" />
+
+  
+  <property name="tools.dir" value="${project.base.dir}\Tools" />
   <echo message="tools.dir:  ${tools.dir}"/>
   <property name="nant.settings.currentframework" value="net-4.0" />
   <property name="nunit.dir" value="${tools.dir}\NUnit" />
   <property name="nant.contrib.dir" value="${tools.dir}\NAntContrib" />
+  <property name="teamcity.build.checkoutDir" value="${project.base.dir}" overwrite="false" />
   <loadtasks assembly="${tools.dir}\NAntContrib\NAnt.Contrib.Tasks.dll"/>
   <loadtasks assembly="${tools.dir}\XiphiSoftNantTasks\XiphiSoft.NantTasks.dll" />
 
-   <echo message="project.base.dir = ${project.base.dir}" />
-   <echo message="deploy.dir = ${deploy.dir}" />
-   <echo message="output.dir = ${output.dir}" />
   <!-- End declaration -->
+
   <target name="clean">
     <delete dir="${output.dir}" />
     <delete dir="${deploy.dir}" />
     <echo message="Deleted output and deploy directory"/>
   </target>
 
-  <target name="prebuild" depends="clean">
+  <target name="prebuild">
+  <echo message="##teamcity[buildNumber '${versionNo}.${sys.env.BUILD_NUMBER}']"></echo>
+   <property name="build.number" value="0" overwrite="false"/>
+  <echo message="Build file location ${buildFileLocation} with build number ${property::exists('build.number')}"/>
     <echo message="Prebuild started to make changes for build number etc."/>
     <property name="tmpfileLoc" value ="${build.process.dir}\tmp" />
     <echo message="To tmpfileLoc == ${tmpfileLoc} and build.number == ${build.number}"/>
@@ -123,7 +134,7 @@
     </zip>
   </target>
 
-  <target name="run" depends="package">
+  <target name="deploy" depends="package">
     <mkdir dir="d:\webroot\${app.name}_${build.number}" />
     <iisapppool action="Stop" pool="DefaultAppPool" server="localhost" />
     <copy todir="d:\webroot\${app.name}_${build.number}" overwrite="true">
