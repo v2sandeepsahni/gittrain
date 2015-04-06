@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<project name="GitTrain" default="run" basedir=".">
+  <!-- declare property -->
+  <property name="buildFileLocation" value ="${project::get-base-directory()}"/>
+  <property name="app.name" value ="GitTrain"/>
+  <property name="project.base.dir" value="${teamcity.build.checkoutDir}\src"/>
+  <property name="build.process.dir" value="${project.base.dir}" />
+  <property name="deploy.build.process.dir" value="${buildFileLocation}\.." />
+  <property name="output.dir" value="${deploy.build.process.dir}\output" />
+  <property name="build.type" value="Debug"/>
+  <property name="deploy.dir" value="${deploy.build.process.dir}\output\deploy" />
+  <property name="solution.base.dir" value="${teamcity.build.checkoutDir}\src" />
+  <property name="app.base.dir" value="." unless="${property::exists('app.base.dir')}" />
+  <property name="app.dir" value="${solution.base.dir}\${app.base.dir}\${app.name}"/>
+  <property name="solution.path" value="${solution.base.dir}\${app.name}.sln" unless="${property::exists('solution.path')}"/>
+  <property name="msbuildConstants" value="" />
+  <if test="${build.type=='Release'}">
+    <property name="msbuildConstants" value="RELEASE" />
+  </if>
+  <property name="tools.dir" value="${teamcity.build.checkoutDir}\Tools" />
+  <echo message="tools.dir:  ${tools.dir}"/>
+  <property name="nant.settings.currentframework" value="net-4.0" />
+  <property name="nunit.dir" value="${tools.dir}\NUnit" />
+  <property name="nant.contrib.dir" value="${tools.dir}\NAntContrib" />
+  <loadtasks assembly="${tools.dir}\NAntContrib\NAnt.Contrib.Tasks.dll"/>
+  <loadtasks assembly="${tools.dir}\XiphiSoftNantTasks\XiphiSoft.NantTasks.dll" />
+
+   <echo message="project.base.dir = ${project.base.dir}" />
+   <echo message="deploy.dir = ${deploy.dir}" />
+   <echo message="output.dir = ${output.dir}" />
+  <!-- End declaration -->
+  <target name="clean">
+    <delete dir="${output.dir}" />
+    <delete dir="${deploy.dir}" />
+    <echo message="Deleted output and deploy directory"/>
+  </target>
+
+  <target name="prebuild" depends="clean">
+    <echo message="Prebuild started to make changes for build number etc."/>
+    <property name="tmpfileLoc" value ="${build.process.dir}\tmp" />
+    <echo message="To tmpfileLoc == ${tmpfileLoc} and build.number == ${build.number}"/>
+    <copy todir="${tmpfileLoc}" overwrite="true">
+      <fileset basedir="${solution.base.dir}">
+        <include name="ConfigFiles/**/*.config" />
+        <include name="gittrain/**/*.config" />
+        <include name="gittrain/**/*.xml" />
+        <include name="build/**/*" />
+        <exclude name="**/templates/**/*" />
+        <exclude name="**/*/build.log" />
+        <exclude name="**/*.swp" />
+        <exclude name="*.swp" />
+      </fileset>
+      <filterchain>
+        <replacetokens>
+          <token key="BUILD_DATE" value="${datetime::now()} IST" />
+          <token key="BUILD_NUMBER" value="${build.number}" />
+        </replacetokens>
+        <tabstospaces />
+      </filterchain>
+    </copy>
+    <attrib normal="true" verbose="false">
+      <fileset>
+        <include name="${tmpfileLoc}/**" />
+        <include name="${solution.base.dir}/**" />
+      </fileset>
+    </attrib>
+    <copy todir="${solution.base.dir}" overwrite="true">
+      <fileset basedir="${tmpfileLoc}">
+        <include name="ConfigFiles/**/*.config" />
+        <include name="gittrain/**/*.config" />
+        <include name="gittrain/**/*.xml" />
+        <exclude name="**/templates/**/*" />
+        <exclude name="**/*/build.log" />
+        <exclude name="**/*.swp" />
+        <exclude name="*.swp" />
+      </fileset>
+    </copy>
+    <delete dir="${tmpfileLoc}" />
+    <echo message="Prebuild completed"/>
+  </target>
+
+  <target name="build" depends="prebuild">
+>
+  <echo message="Output file location ${output.dir}"/>
+  <echo message="Output file location ${solution.path}"/>
+  
+    <delete dir="${deploy.dir}"/>
+    <mkdir dir="${deploy.dir}" />
+    <mkdir dir="${output.dir}" />
+    <echo message="Created output and deploy directory"/>
+    <echo message="Starting ${build.type} msbuild for within teamcity" />
+    <echo message="${build.process.dir} and solution to build is ${solution.path}"></echo>
+    <property name="msbuild.exe" value="${framework::get-framework-directory(nant.settings.currentframework)}\msbuild.exe" />
+    <exec program="${msbuild.exe}">
+      <arg path="${solution.path}" />
+      <arg value="/p:Configuration=${build.type}" />
+      <arg value="/t:Clean;Build" />
+      <arg value="/verbosity:quiet" />
+      <arg value="/maxcpucount:6" />
+      <arg value="/p:DefineConstants=${msbuildConstants}" />
+      <arg value="/p:OutDir=deploy\" />
+      <arg value="/nr:false" />
+    </exec>
+  </target>
+
+  <target name="test" depends="build">
+    <echo message="test started"/>
+  </target>
+
+  <target name="package" depends="test">
+    <property name="srcFolder" value="${app.dir}\deploy\_PublishedWebsites\${app.name}"/>
+    <echo message="${srcFolder}"/>
+    <mkdir dir="${deploy.dir}\${app.name}" />
+    <copy todir="${deploy.dir}\${app.name}" overwrite="true">
+      <fileset basedir="${srcFolder}">
+        <include name="**/*" />
+      </fileset>
+    </copy>
+    <zip zipfile="${deploy.dir}\${app.name}_${build.number}.zip">
+      <fileset basedir="${deploy.dir}\${app.name}" >
+        <include name="**/*" />
+      </fileset>
+    </zip>
+  </target>
+
+  <target name="run" depends="package">
+    <mkdir dir="d:\webroot\${app.name}_${build.number}" />
+    <iisapppool action="Stop" pool="DefaultAppPool" server="localhost" />
+    <copy todir="d:\webroot\${app.name}_${build.number}" overwrite="true">
+      <fileset basedir="${srcFolder}">
+        <include name="**/*" />
+      </fileset>
+    </copy>
+    <echo message="Deploy started"/>
+    <mkiisdir iisserver="localhost:8080" dirpath="d:\webroot\${app.name}_${build.number}" vdirname="${app.name}"/>
+    <iisapppool action="Start" pool="DefaultAppPool" server="localhost" />
+    <delete dir="${app.dir}\deploy"/>
+  </target>
+</project>

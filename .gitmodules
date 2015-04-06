@@ -1,0 +1,3 @@
+[submodule "build/MasterBuild"]
+	path = build/MasterBuild
+	url = git@github.com:LendingTree/MasterBuild.git
